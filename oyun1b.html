@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Temel Genetik Kavramlar Oyunu</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 24px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 40px;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .btn-basla {
+      font-size: 22px;
+      padding: 14px 40px;
+      border: 2px solid #fff;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-basla:hover {
+      background: #fff;
+      color: #000;
+    }
+         .nav-buttons {
+  position: fixed;
+  bottom: 40px;   /* ⬅️ BUNU ARTIRDIK */
+  right: 20px;
+  display: flex;
+  align-items: center;  /* ⬅️ DİKEY ORTALAMA */
+  gap: 20px;
+  z-index: 9999;
+}
+
+.nav-btn {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.nav-btn-geri {
+  width: 80px;
+  height: 80px;
+}
+  </style>
+</head>
+
+<body>
+
+  <div>
+    Başlayacak oyunda <strong>"Baskın"</strong> ve <strong>"Çekinik"</strong> genleri
+    uygun sepetlere yerleştirin
+  </div>
+
+  <button class="btn-basla" onclick="window.location.href='oyun1.html'">
+    Başla
+  </button>
+<div class="nav-buttons">
+  <a href="index.html">
+    <img src="geri.png" alt="Geri" class="nav-btn nav-btn-geri">
+  </a>
+</div>
+</body>
+</html>
