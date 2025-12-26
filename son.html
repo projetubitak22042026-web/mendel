@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Genetik Avcıları</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* Video tüm ekranı kaplasın */
+    video {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover; /* Tam ekran doldurur (kenarlar kırpılabilir) */
+      background: #000;
+    }
+
+    /* Video bittikten sonra yazı (isteğe bağlı) */
+    .end-text {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      color: #fff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: clamp(24px, 5vw, 56px);
+      font-weight: 800;
+      background: rgba(0,0,0,0.65);
+    }
+         .nav-buttons {
+  position: fixed;
+  bottom: 40px;   /* ⬅️ BUNU ARTIRDIK */
+  right: 20px;
+  display: flex;
+  align-items: center;  /* ⬅️ DİKEY ORTALAMA */
+  gap: 20px;
+  z-index: 9999;
+}
+
+.nav-btn {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.nav-btn-geri {
+  width: 80px;
+  height: 80px;
+}
+  </style>
+</head>
+<body>
+
+  <video id="v" src="son.mp4" autoplay muted playsinline></video>
+
+  <div id="endText" class="end-text">TEBRİKLER! 🎉<br>Üç bölümü de tamamladın!</div>
+
+  <script>
+    const v = document.getElementById("v");
+    const endText = document.getElementById("endText");
+
+    // Bazı tarayıcılarda autoplay için muted gerekir (yukarıda muted var).
+    v.play().catch(() => { /* kullanıcı etkileşimi gerekebilir */ });
+
+    // Videoya tıklayınca tam ekran dene (mobil/Chrome politikaları için iyi)
+    document.addEventListener("click", async () => {
+      try {
+        if (v.requestFullscreen) await v.requestFullscreen();
+        else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen(); // iOS Safari
+        v.muted = false; // istersen sesi açmaya da çalışır (tarayıcı izin verirse)
+        v.play().catch(()=>{});
+      } catch (e) {}
+    }, { once: true });
+
+    // Video bitince yazı göster (istemiyorsan bu kısmı silebilirsin)
+    v.addEventListener("ended", () => {
+      endText.style.display = "flex";
+    });
+  </script>
+<div class="nav-buttons">
+  <a href="OYUN3.html">
+    <img src="geri.png" alt="Geri" class="nav-btn nav-btn-geri">
+  </a>
+</div>
+</body>
+</html>
